@@ -114,3 +114,6 @@ neofetch
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 set -o vi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
