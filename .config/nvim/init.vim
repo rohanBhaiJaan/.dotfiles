@@ -2,7 +2,7 @@ if has("syntax")
     syntax on
 endif
 
-call plug#begin('~/.dotfiles/plugins')
+call plug#begin('~/.plugins/')
 Plug 'morhetz/gruvbox'
 
 Plug 'preservim/nerdtree'
