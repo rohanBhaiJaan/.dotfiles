@@ -20,7 +20,7 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
-Plug '~/.dotfiles/master/.config/nvim/custom/'
+Plug '~/.config/nvim/custom/'
 call plug#end()
 
 let mapleader = " "
