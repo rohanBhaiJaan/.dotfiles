@@ -23,19 +23,18 @@ Plug 'junegunn/fzf.vim'
 Plug '~/.config/nvim/custom/'
 call plug#end()
 
-let mapleader = " "
-set hidden
 set nu rnu
 set guicursor=
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set nowrap noswapfile nobackup
 set incsearch inccommand=split nohlsearch
-set autoread
+set autoread hidden
 set splitbelow splitright
 set scrolloff=20
 set bg=dark
 colorscheme gruvbox
 
+let mapleader = " "
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
