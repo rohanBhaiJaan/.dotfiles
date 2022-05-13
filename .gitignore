@@ -1,4 +1,6 @@
 ssh*
 vifminfo*
-plugins/
 *.old
+
+plugins/
+**/shada/
