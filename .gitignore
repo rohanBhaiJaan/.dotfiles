@@ -1,6 +1,7 @@
 ssh*
 vifminfo*
 *.old
+.vim/.netrwhist
 
 plugins/
-**/shada/
+shada/
