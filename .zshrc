@@ -111,6 +111,13 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-set -o vi
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# CUSTOM SETTINGS
+set -o vi
+alias gss='git status -s'
+alias ga='git add .'
+alias commit='git commit -m '
