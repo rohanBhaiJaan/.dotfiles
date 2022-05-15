@@ -15,6 +15,8 @@ set lazyredraw
 set bg=dark
 
 call plug#begin("~/.vim-plugins")
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'danilo-augusto/vim-afterglow'
 call plug#end()
 
