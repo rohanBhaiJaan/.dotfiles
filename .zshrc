@@ -112,9 +112,27 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-if [ -d "$HOME/.local/bin" ]; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
+
+addPath (){
+    path_list=(`echo $PATH | sed 's/:/\n/g'`)
+
+    exists=0
+    for path in ${path_list[@]}; do
+        if [[ "$path" = "$1"  ]]; then
+            exists=1
+            break
+        fi
+    done
+
+    if ! [[ "$exists" -eq "1" ]]; then
+        PATH="$PATH:$1"
+    else
+        echo "$1 exists in \$PATH"
+    fi
+}
+
+[[ -d "/data/data/com.termux/files/usr/bin/" ]] && addPath "/data/data/com.termux/files/usr/bin"
+[[ -d "$HOME/.local/bin/" ]] && addPath "$HOME/.local/bin"
 
 # CUSTOM SETTINGS
 set -o vi

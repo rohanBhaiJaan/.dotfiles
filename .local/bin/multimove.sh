@@ -1,15 +1,19 @@
 #! /bin/bash
 
-files=$(rg --files -g "$1")
+if [[ -d "$1" ]]; then
+    objects=$1
+else
+    objects=$(rg --files -g "$1")
+fi
 path=$2
 
-files=(`echo $files | sed "s/\s/\n/g"`)
+objects=(`echo $objects | sed "s/\s/\n/g"`)
 
 [ ! -d $path ] && mkdir -p $path
 
-for file in ${files[@]}; do
-    newLocation="$path/$file"
-    mv $file $newLocation
+for object in ${objects[@]}; do
+    newLocation="$path/$object"
+    mv $object $newLocation
 done
 
 echo "program completed successfully"

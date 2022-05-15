@@ -2,6 +2,7 @@ ssh*
 vifminfo*
 *.old
 .vim/.netrwhist
+.config/neofetch
 
 plugins/
 shada/
