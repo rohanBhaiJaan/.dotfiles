@@ -4,4 +4,4 @@ vifminfo*
 .vim/.netrwhist
 
 plugins/
-shada/
+.local/share/
