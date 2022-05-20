@@ -29,7 +29,7 @@ ZSH_THEME="af-magic"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -109,30 +109,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+ [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+ [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-addPath (){
-    path_list=(`echo $PATH | sed 's/:/\n/g'`)
-
-    exists=0
-    for path in ${path_list[@]}; do
-        if [[ "$path" = "$1"  ]]; then
-            exists=1
-            break
-        fi
-    done
-
-    if ! [[ "$exists" -eq "1" ]]; then
-        PATH="$PATH:$1"
-    else
-        echo "$1 exists in \$PATH"
-    fi
-}
-
-[[ -d "/data/data/com.termux/files/usr/bin/" ]] && addPath "/data/data/com.termux/files/usr/bin"
-[[ -d "$HOME/.local/bin/" ]] && addPath "$HOME/.local/bin"
+ [[ -d $HOME/.local/bin ]] && PATH="$PATH:$HOME/.local/bin"
 
 # CUSTOM SETTINGS
 set -o vi
