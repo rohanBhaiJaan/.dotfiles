@@ -41,3 +41,9 @@ inoremap <C-v> <ESC>:read !termux-clipboard-get<CR>i
 
 let g:netrw_winsize = 30
 let g:netrw_banner = 0
+
+hi Normal         ctermbg=234
+hi CursorLine     ctermbg=240 cterm=none
+hi CursorLineNr   ctermbg=237 cterm=none
+hi Pmenu          ctermbg=237 ctermfg=251
+hi PmenuSel       ctermbg=247 ctermfg=254

@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 
 if [[ -d "$1" ]]; then
     objects=$1
