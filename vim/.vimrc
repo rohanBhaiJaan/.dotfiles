@@ -14,11 +14,13 @@ set colorcolumn=80 cursorline
 set scrolloff=20
 set lazyredraw
 set bg=dark
+colorscheme monokai
 
-call plug#begin("~/.vim-plugins")
+call plug#begin("~/.vim/autoload")
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug '~/.config/nvim/custom'
 call plug#end()
@@ -42,8 +44,10 @@ inoremap <C-v> <ESC>:read !termux-clipboard-get<CR>i
 let g:netrw_winsize = 30
 let g:netrw_banner = 0
 
-hi Normal         ctermbg=234
-hi CursorLine     ctermbg=240 cterm=none
-hi CursorLineNr   ctermbg=237 cterm=none
-hi Pmenu          ctermbg=237 ctermfg=251
-hi PmenuSel       ctermbg=247 ctermfg=254
+if g:colors_name != "monokai"
+    hi Normal         ctermbg=234
+    hi CursorLine     ctermbg=240 cterm=none
+    hi CursorLineNr   ctermbg=237 cterm=none
+    hi Pmenu          ctermbg=237 ctermfg=251
+    hi PmenuSel       ctermbg=247 ctermfg=254
+endif
