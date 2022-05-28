@@ -31,75 +31,12 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 call plug#end()
 
-lua <<EOF
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.clangd.setup{}
-
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-local lspconfig = require('lspconfig')
-
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'pyright', 'tsserver', 'vimls' }
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    -- on_attach = my_custom_on_attach,
-    capabilities = capabilities,
-  }
-end
-
--- luasnip setup
-local luasnip = require 'luasnip'
-
--- nvim-cmp setup
-local cmp = require 'cmp'
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-  }),
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  },
-}
-
-EOF
+lua require("my_lsp_config")
 
 set nu rnu
 set guicursor=
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-set nowrap noswapfile nobackup
+set nowrap noswapfile nobackup backspace=0
 set incsearch inccommand=split nohlsearch
 set autoread hidden
 set splitbelow splitright
@@ -135,6 +72,11 @@ nnoremap <F1> :TagbarToggle<CR>
 nnoremap <leader>ed :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap <leader>jd :lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>jD :lua vim.lsp.buf.declaration()<CR>
+
+inoremap <BS> <Nop>
+inoremap <Del> <Nop>
+inoremap <C-w> <Nop>
+inoremap <C-h> <Nop>
 
 augroup Vim
     autocmd! VimEnter *.vim nnoremap <leader>x :source ~/.config/nvim/init.vim<CR>
