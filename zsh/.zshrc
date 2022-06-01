@@ -50,7 +50,7 @@ HYPHEN_INSENSITIVE="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
@@ -119,3 +119,5 @@ set -o vi
 alias gss='git status -s'
 alias ga='git add .'
 alias commit='git commit -m '
+
+bindkey -s '\ep' 'tmux-multiplexer.sh'

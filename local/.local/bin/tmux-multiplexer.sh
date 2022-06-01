@@ -1,16 +1,16 @@
 #!/data/data/com.termux/files/usr/bin/env bash
 
-tmux_path=$2
-# syntax: tmux-multiplexer $name $dir
-
-if [ "$PROOT" == "yes" ]; then
-    tmux_path=$(echo "$tmux_path" | sed 's/\/root//')
-    echo $tmux_path
-    tmux_path="/data/data/com.termux/files/home$tmux_path"
+if [ $# -eq 0 ]; then
+    echo "PLEASE PASS ARGS."
+    exit
 fi
 
-echo $tmux_path
+string_projects_paths=( "$(echo ~/projects/*/ )" )
+additionalFolders="$HOME/.dotfiles /data/data/com.termux/files/usr/tmp"
+string_projects_paths="$additionalFolders $string_projects_paths"
+project_path=$(echo "$string_projects_paths" | tr ' ' '\n' | fzf)
+# syntax: tmux-multiplexer $name $dir
 
-tmux new-session -s $1 -c "$tmux_path" -n term -d
-tmux new-window -n editor -c "$tmux_path" "nvim ."
+tmux new-session -s $1 -c "$project_path" -n term -d
+tmux new-window -n editor -c "$project_path" "nvim ."
 tmux attach -t $1

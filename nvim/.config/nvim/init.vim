@@ -69,10 +69,6 @@ nnoremap gs :G<CR>
 nnoremap Y y$
 nnoremap <F1> :TagbarToggle<CR>
 
-nnoremap <leader>ed :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
-nnoremap <leader>jd :lua vim.lsp.buf.definition()<CR>
-nnoremap <leader>jD :lua vim.lsp.buf.declaration()<CR>
-
 inoremap <BS> <Nop>
 inoremap <Del> <Nop>
 inoremap <C-w> <Nop>
