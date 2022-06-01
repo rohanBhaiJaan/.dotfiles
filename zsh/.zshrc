@@ -120,4 +120,4 @@ alias gss='git status -s'
 alias ga='git add .'
 alias commit='git commit -m '
 
-bindkey -s '\ep' 'tmux-multiplexer.sh'
+bindkey -s '\ep' 'tmux-multiplexer.sh\n'
