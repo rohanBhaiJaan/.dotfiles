@@ -16,7 +16,6 @@ Plug 'vimwiki/vimwiki'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'ThePrimeagen/vim-be-good'
 Plug 'tpope/vim-fugitive'
 
 Plug 'junegunn/fzf'

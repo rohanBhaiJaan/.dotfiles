@@ -26,9 +26,9 @@ function! s:CompileAndRun()
 endfunction
 
 augroup CP
-    autocmd FILETYPE cpp nnoremap <F3> :call <SID>SplitSetupForCPP()<CR>
-    autocmd FILETYPE cpp nnoremap <F5> :call <SID>RunCode()<CR>
-    autocmd FILETYPE cpp nnoremap <F8> :call <SID>CompileAndRun()<CR>
+    autocmd FILETYPE cpp nnoremap <leader>s :call <SID>SplitSetupForCPP()<CR>
+    autocmd FILETYPE cpp nnoremap <leader>r :call <SID>RunCode()<CR>
+    autocmd FILETYPE cpp nnoremap <leader>cr :call <SID>CompileAndRun()<CR>
     autocmd BufEnter *.cpp let g:cpFileName = expand('%:t')
     autocmd BufEnter *.cpp let g:cpFileHeadName = expand('%:t')
 augroup END
