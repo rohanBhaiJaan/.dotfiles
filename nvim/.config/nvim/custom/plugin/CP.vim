@@ -1,3 +1,9 @@
+if exists("g:My_CP_set")
+    echo "custom cp setup already sourced"
+    finish
+endif
+let g:My_CP_set = 1
+
 let g:cpFileHeadName = expand('%:t:r')
 let g:cpFileName = expand('%:t')
 
