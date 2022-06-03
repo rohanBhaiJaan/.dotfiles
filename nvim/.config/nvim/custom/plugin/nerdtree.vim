@@ -1,3 +1,10 @@
+if exists("g:My_nerdtree")
+    echo "custom nerdtree.vim already sourced"
+    finish
+endif
+
+let g:My_nerdtree = 1
+
 if exists("g:NERDTree")
     let g:NERDTreeWinSize=19
 

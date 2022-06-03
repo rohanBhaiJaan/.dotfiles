@@ -20,7 +20,7 @@ call plug#begin("~/.vim/autoload")
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'sheerun/vim-polyglot'
 
 Plug '~/.config/nvim/custom'
 call plug#end()
@@ -37,9 +37,10 @@ nnoremap <Esc>k <C-u>
 nnoremap <C-e> :Lex<CR>
 nnoremap Y y$
 
-vnoremap <C-x> :!termux-clipboard-set<CR>
-vnoremap <C-c> :w !termux-clipboard-set<CR><CR>
-inoremap <C-v> <ESC>:read !termux-clipboard-get<CR>i
+inoremap <BS> <Nop>
+inoremap <Del> <Nop>
+inoremap <C-w> <Nop>
+inoremap <C-h> <Nop>
 
 let g:netrw_winsize = 30
 let g:netrw_banner = 0
