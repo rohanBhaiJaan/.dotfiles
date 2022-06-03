@@ -3,14 +3,15 @@
 "     finish
 " endif
 
-setlocal updatetime=1500
+setlocal updatetime=1000
 
 let g:changeMode = 1
 
 function s:setup() abort
     exec 'stopinsert'
     split ~/.local/templates/changeMode.hle
-    exec "normal gi"
+    resize 2
+    exec "normal a"
 endfunction
 
 augroup changeMode
