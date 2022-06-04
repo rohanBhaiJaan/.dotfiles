@@ -119,5 +119,7 @@ set -o vi
 alias gss='git status -s'
 alias ga='git add .'
 alias commit='git commit -m '
-
+alias start="vncserver -name remote-desktop -geometry 1280x720 :1"
 bindkey -s '\ep' 'tmux-multiplexer.sh\n'
+
+export DISPLAY=":1"
