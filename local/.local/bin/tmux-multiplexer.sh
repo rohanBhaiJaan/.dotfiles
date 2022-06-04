@@ -6,6 +6,8 @@ if [ $# -gt 1 ]; then
     exit
 fi
 
+set -e
+
 # sourcing all path of projects
 dotfiles_string_projects_paths=( "$(echo ~/.dotfiles/*/ )" )
 string_projects_paths=( "$(echo ~/projects/*/ )" )

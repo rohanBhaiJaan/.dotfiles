@@ -14,7 +14,7 @@ env_install(){
 
 install(){
     [  -f  ~/.zshrc ] && rm ~/.zshrc
-    [ -d  ~/.termux  ] && rm .termux -rf
+    [ -d  ~/.termux  ] && rm ~/.termux -rf
     stow -t $HOME -S */
     echo "added all config file in root dir"
 }
