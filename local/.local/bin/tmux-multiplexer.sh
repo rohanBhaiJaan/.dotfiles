@@ -6,20 +6,27 @@ if [ $# -gt 1 ]; then
     exit
 fi
 
+set -e
+
 # sourcing all path of projects
-dotfiles_string_projects_paths=( "$(echo ~/.dotfiles/*/ )" )
-string_projects_paths=( "$(echo ~/projects/*/ )" )
-additionalFolders="/data/data/com.termux/files/usr/tmp"
-string_projects_paths="$string_projects_paths $dotfiles_string_projects_paths $additionalFolders"
+[ "$(ls -A ~/projects/)" ] && projects_paths=( ~/projects/*/ ) || projects_paths=()
+[ "$(ls -A ~/.dotfiles/)" ] && dotfiles_projects_paths=( ~/.dotfiles/*/ ) || dotfiles_projects_paths=()
+[ "$(ls -A ~/personal/)" ] && personal_folder_paths=( ~/personal/*/ ) || personal_folder_paths=()
+additional_folders=( /data/data/com.termux/files/usr/tmp )
+
+paths=( ${projects_paths[@]} )
+paths+=( ${dotfiles_projects_paths[@]} )
+paths+=( ${personal_folder_paths[@]} )
+paths+=( ${additional_folders[@]} )
 
 # getting project path and project name from user
-project_path=$(echo "$string_projects_paths" | tr ' ' '\n' | fzf)
-selected_folders_name=($( echo $project_path | tr '/' ' ' ))
+project_path=$( echo "${paths[@]}" | tr ' ' '\n' | fzf)
+folder_name_arr=($( echo $project_path | tr '/' ' ' ))
 
 if [ $# -eq 1 ]; then
     session_name=$1
 else
-    session_name="$(echo ${selected_folders_name[-1]} | sed "s/\W/_/g" )"
+    session_name="$(echo ${folder_name_arr[-1]} | sed "s/\W/_/g" )"
 fi
 
 # setting session
