@@ -58,6 +58,11 @@ nnoremap <A-j> <C-d>
 nnoremap <A-k> <C-u>
 nnoremap <C-e> :Lex<CR>
 
+nnoremap <A-u> 1gt
+nnoremap <A-i> 2gt
+nnoremap <A-o> 3gt
+nnoremap <A-p> 4gt
+
 nnoremap - :vertical resize -5<CR>
 nnoremap + :vertical resize +5<CR>
 

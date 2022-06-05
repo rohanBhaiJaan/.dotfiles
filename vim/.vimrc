@@ -40,6 +40,11 @@ nnoremap <Esc>k <C-u>
 nnoremap <C-e> :Lex<CR>
 nnoremap Y y$
 
+nnoremap <A-u> 1gt
+nnoremap <A-i> 2gt
+nnoremap <A-o> 3gt
+nnoremap <A-p> 4gt
+
 inoremap <BS> <Nop>
 inoremap <Del> <Nop>
 inoremap <C-w> <Nop>
