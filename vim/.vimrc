@@ -15,12 +15,15 @@ set scrolloff=20
 set lazyredraw
 set bg=dark
 colorscheme monokai
+set noshowmode
 
 call plug#begin("~/.vim/autoload")
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
+
 Plug 'sheerun/vim-polyglot'
+Plug 'itchyny/lightline.vim'
 
 Plug '~/.config/nvim/custom'
 call plug#end()
@@ -44,6 +47,9 @@ inoremap <C-h> <Nop>
 
 let g:netrw_winsize = 30
 let g:netrw_banner = 0
+let g:lightline = {
+            \  'colorscheme': 'solarized',
+            \}
 
 if g:colors_name != "monokai"
     hi Normal         ctermbg=234
