@@ -9,30 +9,27 @@ fi
 set -e
 
 # sourcing all path of projects
-dotfiles_projects_paths=( ~/.dotfiles/*/ )
-projects_paths=( ~/projects/*/ )
+[ "$(ls -A ~/projects/)" ] && projects_paths=( ~/projects/*/ ) || projects_paths=()
+[ "$(ls -A ~/.dotfiles/)" ] && dotfiles_projects_paths=( ~/.dotfiles/*/ ) || dotfiles_projects_paths=()
+[ "$(ls -A ~/personal/)" ] && personal_folder_paths=( ~/personal/*/ ) || personal_folder_paths=()
 additional_folders=( /data/data/com.termux/files/usr/tmp )
-projects_paths+=" $dotfiles_projects_paths"
-projects_paths+=" $projects_paths"
-projects_paths+=" $additional_folders"
 
-projects_paths_string_version=""
-for dir in ${projects_paths[@]}; do
-    echo $dir
-    projects_paths_string_version="$projects_paths_string_version $dir"
-done
+paths=( ${projects_paths[@]} )
+paths+=( ${dotfiles_projects_paths[@]} )
+paths+=( ${personal_folder_paths[@]} )
+paths+=( ${additional_folders[@]} )
 
 # getting project path and project name from user
-# project_path=$( "$projects_paths_string_version" | tr ' ' '\n' | fzf)
-# selected_folders_name=($( echo $project_path | tr '/' ' ' ))
+project_path=$( echo "${paths[@]}" | tr ' ' '\n' | fzf)
+folder_name_arr=($( echo $project_path | tr '/' ' ' ))
 
-# if [ $# -eq 1 ]; then
-#     session_name=$1
-# else
-#     session_name="$(echo ${selected_folders_name[-1]} | sed "s/\W/_/g" )"
-# fi
+if [ $# -eq 1 ]; then
+    session_name=$1
+else
+    session_name="$(echo ${folder_name_arr[-1]} | sed "s/\W/_/g" )"
+fi
 
-# # setting session
-# tmux new-session -s $session_name -c "$project_path" -n term -d
-# tmux new-window -n editor -c "$project_path" "nvim ."
-# tmux attach -t $session_name
+# setting session
+tmux new-session -s $session_name -c "$project_path" -n term -d
+tmux new-window -n editor -c "$project_path" "nvim ."
+tmux attach -t $session_name
