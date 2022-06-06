@@ -28,6 +28,7 @@ install_zsh_themes(){
         theme_name="${theme_name[-1]}"
         ln -fs $theme $zsh_custom/themes/$theme_name
     done
+    echo "installed zsh themes successfully"
 }
 
 case "$1" in
