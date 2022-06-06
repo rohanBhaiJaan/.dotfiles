@@ -3,6 +3,7 @@
 help_setup(){
     echo "use env-install to setup environment"
     echo "use install keyword as args to install setup"
+    echo "use install-zsh-themes keyword as args to install setup"
     echo "use remove keyword as args to remove setup"
 }
 
@@ -19,11 +20,23 @@ install(){
     echo "added all config file in root dir"
 }
 
+install_zsh_themes(){
+    [ "$(ls -A .themes )" ] &&  themes=( $HOME/.dotfiles/.themes/* ) || themes=()
+    for theme in ${themes[@]}; do
+        echo $ZSH_CUSTOM
+        theme_name=( $( echo "$theme" | tr '/' ' ') )
+        theme_name="${theme_name[-1]}"
+        ln -fs $theme $zsh_custom/themes/$theme_name
+    done
+}
+
 case "$1" in
     "env-install")
         env_install ;;
     "install")
         install ;;
+    "install-zsh-themes")
+        install_zsh_themes ;;
     "remove")
         stow -t $HOME -D */ ;;
     *) help_setup

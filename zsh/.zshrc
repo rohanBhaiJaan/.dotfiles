@@ -15,7 +15,7 @@ export ZSH="${HOME}/.oh-my-zsh/"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="af-magic"
+ZSH_THEME="pi"
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
@@ -119,5 +119,7 @@ set -o vi
 alias gss='git status -s'
 alias ga='git add .'
 alias commit='git commit -m '
+
+declare -x zsh_custom=$ZSH_CUSTOM
 
 bindkey -s '\ep' 'tmux-multiplexer.sh\n'
