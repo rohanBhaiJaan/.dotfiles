@@ -2,6 +2,7 @@ ssh*
 vifminfo*
 *.old
 **/.netrwhist
+**/try.*
 .config/neofetch/
 .config/configstore/
 !plug.vim
