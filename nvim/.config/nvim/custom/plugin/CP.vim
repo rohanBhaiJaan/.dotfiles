@@ -37,5 +37,6 @@ augroup CP
     autocmd FILETYPE cpp nnoremap <leader>cr :call <SID>CompileAndRun()<CR>
     autocmd BufEnter *.cpp let g:cpFileName = expand('%:t')
     autocmd BufEnter *.cpp let g:cpFileHeadName = expand('%:t')
+    autocmd BufEnter **/personal/**/*.cpp set foldmethod=syntax
 augroup END
 
