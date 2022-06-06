@@ -35,15 +35,19 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" my terminal use <ESC> key as <Alt>
 nnoremap <Esc>j <C-d>
 nnoremap <Esc>k <C-u>
+
+" remap to navigate through tabs in vim 
+nnoremap <Esc>u 1gt
+nnoremap <Esc>i 2gt
+nnoremap <Esc>o 3gt
+nnoremap <Esc>p 4gt
+
 nnoremap <C-e> :Lex<CR>
 nnoremap Y y$
-
-nnoremap <A-u> 1gt
-nnoremap <A-i> 2gt
-nnoremap <A-o> 3gt
-nnoremap <A-p> 4gt
 
 inoremap <BS> <Nop>
 inoremap <Del> <Nop>
