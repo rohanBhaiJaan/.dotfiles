@@ -15,7 +15,7 @@ endfunction
 function! s:SplitSetupForCPP()
     let l:cpFileName = expand('%:h:t')
     if(winnr('$') <= 2)
-        execute 'vs ~/.compiled/input.in | vertical resize 24 | split ~/.compiled/output.in'
+        execute 'silent keepalt vs ~/.compiled/input.in | vertical resize 24 | silent keepalt split ~/.compiled/output.in'
     elseif(bufexists(g:cpFileName) && (bufnr('~/.compiled/input.in') > 0 || bufnr('~/.compiled/output.in') > 0))
         call s:closeSplitSetupForCP()
     else
