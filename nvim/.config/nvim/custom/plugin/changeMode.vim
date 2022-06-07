@@ -31,8 +31,7 @@ endfunction
 function s:setup() abort
     exec 'stopinsert'
     let l:pos = getpos('.')
-    split ~/.local/templates/changeMode.hle
-    resize 2
+    silent keepalt split ~/.local/templates/changeMode.hle | resize 2
     exec "normal "
     call cursor(l:pos[1], l:pos[2])
     exec "normal a"
