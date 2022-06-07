@@ -32,11 +32,11 @@ function! s:CompileAndRun()
 endfunction
 
 augroup CP
-    autocmd FILETYPE cpp nnoremap <leader>s :call <SID>SplitSetupForCPP()<CR>
-    autocmd FILETYPE cpp nnoremap <leader>r :call <SID>RunCode()<CR>
-    autocmd FILETYPE cpp nnoremap <leader>cr :call <SID>CompileAndRun()<CR>
+    autocmd FILETYPE cpp,h nnoremap <leader>s :call <SID>SplitSetupForCPP()<CR>
+    autocmd FILETYPE cpp,h nnoremap <leader>r :call <SID>RunCode()<CR>
+    autocmd FILETYPE cpp,h nnoremap <leader>cr :call <SID>CompileAndRun()<CR>
+    autocmd FILETYPE c,h,cpp set tabstop=2 softtabstop=2 shiftwidth=2 | set foldmethod=indent
     autocmd BufEnter *.cpp let g:cpFileName = expand('%:t')
     autocmd BufEnter *.cpp let g:cpFileHeadName = expand('%:t')
-    autocmd BufEnter **/personal/**/*.cpp set foldmethod=syntax
 augroup END
 
