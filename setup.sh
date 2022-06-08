@@ -3,19 +3,21 @@
 Red="\033[0;31m"
 Green="\033[0;32m"
 Yellow="\033[1;33m"
+Underline="\033[4m"
 remove_color="\033[0m"
 
 help_setup(){
-    echo "use env-install to setup environment"
-    echo "use install-packages keyword as args to install setup"
-    echo "use install-configs keyword as args to add config files"
-    echo "use install-zsh-themes keyword as args to install setup"
-    echo "use remove keyword as args to remove setup"
+    echo -e "use [ ${Underline}install-all${remove_color} ] to setup environment"
+    echo -e "use [ ${Underline}install-env${remove_color} ] to setup environment"
+    echo -e "use [ ${Underline}install-packages${remove_color} ] keyword as args to install setup"
+    echo -e "use [ ${Underline}install-configs${remove_color} ] keyword as args to add config files"
+    echo -e "use [ ${Underline}install-zsh-themes${remove_color} ] keyword as args to install setup"
+    echo -e "use [ ${Underline}remove${remove_color} ] keyword as args to remove setup"
 }
 
 install_env(){
     [ -d ~/.oh-my-zsh/ ] && echo ".oh-my-zsh already exists" || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    mv ~/.zshrc.p* ~/.zshrc
+    [ -f ~/.zshrc.p* ] && mv ~/.zshrc.p* ~/.zshrc
     [ -d ~/.fzf ] && echo ".fzf already exists" || git clone --depth 2 https://github.com/junegunn/fzf.git ~/.fzf
     [ -f  $PREFIX/bin/fzf ] || ~/.fzf/install
 }
@@ -57,7 +59,12 @@ install_zsh_themes(){
 }
 
 case "$1" in
-    "env-install")
+    "install-all")
+        install_packages
+        install_config
+        install_env
+        install_zsh_themes;;
+    "install-env")
         install_env;;
     "install-packages")
         install_packages;;
@@ -65,11 +72,6 @@ case "$1" in
         install_config ;;
     "install-zsh-themes")
         install_zsh_themes ;;
-    "install_all")
-        install_packages
-        install_config
-        install_env
-        install_zsh_themes;;
     "remove")
         stow -t $HOME -D */ ;;
     *) help_setup
