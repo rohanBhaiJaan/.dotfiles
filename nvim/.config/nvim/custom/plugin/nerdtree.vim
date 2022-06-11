@@ -1,5 +1,4 @@
-if exists("g:My_nerdtree")
-    echo "custom nerdtree.vim already sourced"
+if exists("g:My_nerdtree") || !exists("g:NERDTree") 
     finish
 endif
 
