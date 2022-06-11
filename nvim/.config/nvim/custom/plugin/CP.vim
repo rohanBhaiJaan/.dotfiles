@@ -35,8 +35,9 @@ augroup CP
     autocmd FILETYPE cpp,h nnoremap <leader>s :call <SID>SplitSetupForCPP()<CR>
     autocmd FILETYPE cpp,h nnoremap <leader>r :call <SID>RunCode()<CR>
     autocmd FILETYPE cpp,h nnoremap <leader>cr :call <SID>CompileAndRun()<CR>
-    autocmd FILETYPE c,h,cpp set tabstop=2 softtabstop=2 shiftwidth=2 | set foldmethod=indent
+    autocmd BufEnter *.c,*.h,*.cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd InsertEnter *.c,*.h,*.cpp setlocal foldmethod=manual
     autocmd BufEnter *.cpp let g:cpFileName = expand('%:t')
-    autocmd BufEnter *.cpp let g:cpFileHeadName = expand('%:t')
+    autocmd InsertLeave *.c,*.h,*.cpp setlocal foldmethod=indent
 augroup END
 
