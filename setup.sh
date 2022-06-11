@@ -58,6 +58,12 @@ install_zsh_themes(){
     echo "installed zsh themes successfully"
 }
 
+remove_env(){
+    rm ~/.oh-my-zsh/ -rf
+    rm .termux -rf
+    stow -t $HOME -D */
+}
+
 case "$1" in
     "install-all")
         install_packages
@@ -73,6 +79,6 @@ case "$1" in
     "install-zsh-themes")
         install_zsh_themes ;;
     "remove")
-        stow -t $HOME -D */ ;;
+        remove_env;;
     *) help_setup
 esac
