@@ -28,6 +28,7 @@ function! s:RunCode()
 endfunction
 
 function! s:CompileAndRun()
+    echomsg '!g++ '.g:cpFilePath.' -o ~/.compiled/'. g:cpFileHeadName .' 2> ~/.compiled/output.in && ~/.compiled/'. g:cpFileHeadName .'<~/.compiled/input.in>~/.compiled/output.in'
     if g:cpExt == "cpp"
         execute '!g++ '.g:cpFilePath.' -o ~/.compiled/'. g:cpFileHeadName .' 2> ~/.compiled/output.in && ~/.compiled/'. g:cpFileHeadName .'<~/.compiled/input.in>~/.compiled/output.in'
     elseif g:cpExt == "c"
@@ -41,7 +42,7 @@ augroup CP
     autocmd FILETYPE c,h,cpp nnoremap <leader>cr :call <SID>CompileAndRun()<CR>
     autocmd BufEnter *.c,*.h,*.cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd InsertEnter *.c,*.h,*.cpp setlocal foldmethod=manual
-    autocmd BufEnter *.cpp,*.c let g:cpFilePath = expand('%:t') | let g:cpExt = expand('%:e')
+    autocmd BufEnter *.cpp,*.c let g:cpFilePath = expand('%:p') | let g:cpExt = expand('%:e') | let g:cpFileHeadName = expand("%:t:r")
     autocmd InsertLeave *.c,*.h,*.cpp setlocal foldmethod=indent
 augroup END
 
