@@ -48,6 +48,7 @@ colorscheme gruvbox
 let mapleader = " "
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
+let g:gruvbox_contrast_dark = "hard"
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
