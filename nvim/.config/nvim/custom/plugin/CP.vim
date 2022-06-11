@@ -1,11 +1,12 @@
-if exists("g:My_CP_set")
-    echo "custom cp setup already sourced"
+if exists("g:loaded_My_CP")
     finish
 endif
-let g:My_CP_set = 1
+let g:loaded_My_CP = 1
+
+let g:cpExt = expand("%:e")
 
 let g:cpFileHeadName = expand('%:t:r')
-let g:cpFileName = expand('%:t')
+let g:cpFilePath = expand('%:p')
 
 function! s:closeSplitSetupForCP()
     bdelete ~/.compiled/input.in
@@ -13,10 +14,9 @@ function! s:closeSplitSetupForCP()
 endfunction
 
 function! s:SplitSetupForCPP()
-    let l:cpFileName = expand('%:h:t')
     if(winnr('$') <= 2)
         execute 'silent keepalt vs ~/.compiled/input.in | vertical resize 24 | silent keepalt split ~/.compiled/output.in'
-    elseif(bufexists(g:cpFileName) && (bufnr('~/.compiled/input.in') > 0 || bufnr('~/.compiled/output.in') > 0))
+    elseif(bufexists(g:cpFilePath) && (bufnr('~/.compiled/input.in') > 0 || bufnr('~/.compiled/output.in') > 0))
         call s:closeSplitSetupForCP()
     else
         echo "PLESE OPEN CPP FILE "
@@ -28,16 +28,20 @@ function! s:RunCode()
 endfunction
 
 function! s:CompileAndRun()
-    execute '!g++ '.g:cpFileName.' -o ~/.compiled/'. g:cpFileHeadName .' 2> ~/.compiled/output.in && ~/.compiled/'. g:cpFileHeadName .'<~/.compiled/input.in>~/.compiled/output.in'
+    if g:cpExt == "cpp"
+        execute '!g++ '.g:cpFilePath.' -o ~/.compiled/'. g:cpFileHeadName .' 2> ~/.compiled/output.in && ~/.compiled/'. g:cpFileHeadName .'<~/.compiled/input.in>~/.compiled/output.in'
+    elseif g:cpExt == "c"
+        execute '!clang '.g:cpFilePath.' -o ~/.compiled/'. g:cpFileHeadName .' 3> ~/.compiled/output.in && ~/.compiled/'. g:cpFileHeadName .'<~/.compiled/input.in>~/.compiled/output.in'
+    endif
 endfunction
 
 augroup CP
-    autocmd FILETYPE cpp,h nnoremap <leader>s :call <SID>SplitSetupForCPP()<CR>
-    autocmd FILETYPE cpp,h nnoremap <leader>r :call <SID>RunCode()<CR>
-    autocmd FILETYPE cpp,h nnoremap <leader>cr :call <SID>CompileAndRun()<CR>
+    autocmd FILETYPE c,h,cpp nnoremap <leader>s :call <SID>SplitSetupForCPP()<CR>
+    autocmd FILETYPE c,h,cpp nnoremap <leader>r :call <SID>RunCode()<CR>
+    autocmd FILETYPE c,h,cpp nnoremap <leader>cr :call <SID>CompileAndRun()<CR>
     autocmd BufEnter *.c,*.h,*.cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd InsertEnter *.c,*.h,*.cpp setlocal foldmethod=manual
-    autocmd BufEnter *.cpp let g:cpFileName = expand('%:t')
+    autocmd BufEnter *.cpp,*.c let g:cpFilePath = expand('%:t') | let g:cpExt = expand('%:e')
     autocmd InsertLeave *.c,*.h,*.cpp setlocal foldmethod=indent
 augroup END
 
