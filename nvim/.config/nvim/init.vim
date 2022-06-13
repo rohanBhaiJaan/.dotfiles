@@ -71,7 +71,8 @@ nnoremap + :vertical resize +5<CR>
 
 nnoremap <C-p> :GitFiles<CR>
 nnoremap <C-b> :Buffers<CR>
-nnoremap gs :G<CR>
+nnoremap <C-f> :Files<CR>
+nnoremap gs :G<CR> 
 
 nnoremap Y y$
 nnoremap <F1> :TagbarToggle<CR>
