@@ -28,7 +28,6 @@ function! s:RunCode()
 endfunction
 
 function! s:CompileAndRun()
-    echomsg '!g++ '.g:cpFilePath.' -o ~/.compiled/'. g:cpFileHeadName .' 2> ~/.compiled/output.in && ~/.compiled/'. g:cpFileHeadName .'<~/.compiled/input.in>~/.compiled/output.in'
     if g:cpExt == "cpp"
         execute '!g++ '.g:cpFilePath.' -o ~/.compiled/'. g:cpFileHeadName .' 2> ~/.compiled/output.in && ~/.compiled/'. g:cpFileHeadName .'<~/.compiled/input.in>~/.compiled/output.in'
     elseif g:cpExt == "c"

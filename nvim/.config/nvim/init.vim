@@ -56,6 +56,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <A-j> <C-d>
 nnoremap <A-k> <C-u>
+
+nnoremap <Plug>scroll <C-e>
+nnoremap <ScrollWheelDown> <Plug>scroll
 nnoremap <C-e> :Lex<CR>
 
 nnoremap <A-u> 1gt
