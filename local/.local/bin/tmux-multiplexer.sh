@@ -30,16 +30,23 @@ done
 
 set -e
 
-# sourcing all path of projects
-[ "$(ls -A ~/projects/)" ] && projects_paths=( ~/projects/*/ ) || projects_paths=()
-[ "$(ls -A ~/.dotfiles/)" ] && dotfiles_projects_paths=( ~/.dotfiles/*/ ) || dotfiles_projects_paths=()
-[ "$(ls -A ~/personal/)" ] && personal_folder_paths=( ~/personal/*/ ) || personal_folder_paths=()
-additional_folders=( /data/data/com.termux/files/usr/tmp )
+paths=()
+defaultPaths=("~/.dotfiles/" "~/.dotfiles/*/" "~/projects/*/" "~/personal/*/")
 
-paths=( ${projects_paths[@]} )
-paths+=( ${dotfiles_projects_paths[@]} )
-paths+=( ${personal_folder_paths[@]} )
-paths+=( ${additional_folders[@]} )
+# READING PATHS FROM ~/projectPaths
+if [[ -f ~/projectPaths ]];then
+    while read path; do
+        if [[ $path != "" ]]; then
+            [[ ! $path =~ .*/$ ]] && path="$path/"
+            [[ $(ls -A $(sh -c "echo $path/")) ]] && paths+=( $( sh -c "echo $path | tr ' ' '\n'" ) )
+        fi
+    done < ~/projectPaths
+else
+    # SOURCING ALL PATH OF PROJECTS
+    for path in ${defaultPaths[@]};do
+        [[ $(ls -A $(sh -c "echo $path/")) ]] && paths+=( $( sh -c "echo $path | tr ' ' '\n'" ) )
+    done
+fi
 
 # getting project path and project name from user
 project_path=$( echo "${paths[@]}" | tr ' ' '\n' | fzf)
