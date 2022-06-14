@@ -52,6 +52,7 @@ nnoremap <Plug>scroll <C-e>
 nnoremap <ScrollWheelDown> <Plug>scroll
 nnoremap <C-e> :Lex<CR>
 nnoremap Y y$
+nnoremap <leader>tn :set nu! rnu!<Cr>
 
 inoremap <BS> <Nop>
 inoremap <Del> <Nop>
