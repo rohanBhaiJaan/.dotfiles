@@ -24,6 +24,7 @@ Plug 'vimwiki/vimwiki'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
+Plug 'rohanBhaiJaan/vim-keycast'
 
 Plug '~/.config/nvim/custom'
 call plug#end()
