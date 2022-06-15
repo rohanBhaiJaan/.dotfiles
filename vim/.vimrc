@@ -62,6 +62,7 @@ inoremap <C-h> <Nop>
 
 let g:netrw_winsize = 30
 let g:netrw_banner = 0
+let g:changeMode_waitTime = 1000
 let g:lightline = {
             \  'colorscheme': 'solarized',
             \}

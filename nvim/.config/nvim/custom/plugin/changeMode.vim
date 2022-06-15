@@ -4,11 +4,13 @@
 " Version:      2.0
 
 if exists("g:changeMode")
-    echo 'already sourced'
     finish
 endif
+if ! exists("g:changeMode_waitTime")
+    let g:changeMode_waitTime = 2000
+endif
 let g:changeMode = 1
-setlocal updatetime=2000
+let &updatetime = g:changeMode_waitTime
 
 augroup changeMode
     autocmd!
