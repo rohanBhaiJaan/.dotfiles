@@ -3,12 +3,14 @@
 " Author:       Rohan Kamble
 " Version:      2.0
 
-if exists("g:changeMode")
+if exists("g:changeMode") || has('nvim')
     finish
 endif
+
 if ! exists("g:changeMode_waitTime")
     let g:changeMode_waitTime = 2000
 endif
+
 let g:changeMode = 1
 let &updatetime = g:changeMode_waitTime
 
