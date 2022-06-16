@@ -9,7 +9,6 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " Plug 'preservim/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'ryanoasis/vim-devicons'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'preservim/tagbar'
 Plug 'mattn/emmet-vim'
@@ -19,11 +18,14 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf'
+" Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 Plug '~/.config/nvim/custom/'
 
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -32,6 +34,8 @@ Plug 'L3MON4D3/LuaSnip'
 call plug#end()
 
 lua require("my_lsp_config")
+lua require("my_tokyonight")
+lua require("my_telescope")
 
 set nu rnu
 set guicursor=
@@ -71,9 +75,9 @@ nnoremap <A-p> 4gt
 nnoremap - :vertical resize -5<CR>
 nnoremap + :vertical resize +5<CR>
 
-nnoremap <C-p> :GitFiles<CR>
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-f> :Files<CR>
+" nnoremap <C-p> :GitFiles<CR>
+" nnoremap <C-b> :Buffers<CR>
+" nnoremap <C-f> :Files<CR>
 nnoremap gs :G<CR> 
 
 nnoremap Y y$
