@@ -4,6 +4,7 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/')
 Plug 'morhetz/gruvbox'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " Plug 'preservim/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -43,7 +44,8 @@ set scrolloff=20
 set colorcolumn=80
 set bg=dark
 set cursorline
-colorscheme gruvbox
+
+colorscheme tokyonight
 
 let mapleader = " "
 let g:netrw_banner = 0
