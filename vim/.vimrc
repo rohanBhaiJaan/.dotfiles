@@ -14,7 +14,6 @@ set colorcolumn=80 cursorline
 set scrolloff=20
 set lazyredraw
 set bg=dark
-colorscheme monokai
 set noshowmode
 
 call plug#begin("~/.vim/autoload")
@@ -24,6 +23,7 @@ Plug 'vimwiki/vimwiki'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'rohanBhaiJaan/vim-keycast'
 
 call plug#end()
@@ -65,6 +65,11 @@ let g:changeMode_waitTime = 1000
 let g:lightline = {
             \  'colorscheme': 'solarized',
             \}
+
+set termguicolors
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
 
 if g:colors_name != "monokai"
     hi Normal         ctermbg=234
