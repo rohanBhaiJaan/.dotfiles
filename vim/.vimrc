@@ -26,7 +26,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
 Plug 'rohanBhaiJaan/vim-keycast'
 
-Plug '~/.config/nvim/custom'
 call plug#end()
 
 " <ESC> IS RETURN WHEN ALT IS PRESSED
@@ -74,3 +73,9 @@ if g:colors_name != "monokai"
     hi Pmenu          ctermbg=237 ctermfg=251
     hi PmenuSel       ctermbg=247 ctermfg=254
 endif
+
+source ~/.config/nvim/custom/CP.vim
+source ~/.config/nvim/custom/changeMode.vim
+source ~/.config/nvim/custom/changeMode.vim
+source ~/.config/nvim/custom/nerdtree.vim
+source ~/.config/nvim/custom/smallFunc.vim

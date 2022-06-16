@@ -23,8 +23,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-Plug '~/.config/nvim/custom/'
-
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
@@ -102,3 +100,7 @@ if g:colors_name != "gruvbox"
     hi Pmenu          ctermbg=237                 ctermfg=251
     hi Comment        ctermfg=248
 endif
+
+source ~/.config/nvim/custom/CP.vim
+source ~/.config/nvim/custom/fzf.vim
+source ~/.config/nvim/custom/nerdtree.vim
