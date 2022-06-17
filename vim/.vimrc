@@ -19,9 +19,9 @@ set noshowmode
 call plug#begin("~/.vim/autoload")
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'vimwiki/vimwiki'
 
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
+Plug 'bfrg/vim-cpp-modern'
 Plug 'itchyny/lightline.vim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'rohanBhaiJaan/vim-keycast'
@@ -62,14 +62,12 @@ inoremap <C-h> <Nop>
 let g:netrw_winsize = 30
 let g:netrw_banner = 0
 let g:changeMode_waitTime = 1000
-let g:lightline = {
-            \  'colorscheme': 'solarized',
-            \}
+let g:lightline = { 'colorscheme': 'solarized', }
 
 set termguicolors
 
 let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 1
+" let g:tokyonight_enable_italic = 1
 
 if exists("$g:colors_name") && g:colors_name != "monokai"
     hi Normal         ctermbg=234
@@ -81,6 +79,4 @@ endif
 
 source ~/.config/nvim/custom/CP.vim
 source ~/.config/nvim/custom/changeMode.vim
-source ~/.config/nvim/custom/changeMode.vim
-source ~/.config/nvim/custom/nerdtree.vim
 source ~/.config/nvim/custom/smallFunc.vim
