@@ -71,7 +71,7 @@ set termguicolors
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
 
-if g:colors_name != "monokai"
+if exists("$g:colors_name") && g:colors_name != "monokai"
     hi Normal         ctermbg=234
     hi CursorLine     ctermbg=240 cterm=none
     hi CursorLineNr   ctermbg=237 cterm=none

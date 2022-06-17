@@ -32,8 +32,14 @@ Plug 'L3MON4D3/LuaSnip'
 call plug#end()
 
 lua require("my_lsp_config")
+
+if match(&runtimepath, "telescope") != -1
+    lua require("my_telescope")
+elseif match(&runtimepath, "fzf") != -1
+    source ~/.config/nvim/custom/fzf.vim
+endif
+
 lua require("my_tokyonight")
-lua require("my_telescope")
 
 set nu rnu
 set guicursor=
@@ -73,9 +79,6 @@ nnoremap <A-p> 4gt
 nnoremap - :vertical resize -5<CR>
 nnoremap + :vertical resize +5<CR>
 
-" nnoremap <C-p> :GitFiles<CR>
-" nnoremap <C-b> :Buffers<CR>
-" nnoremap <C-f> :Files<CR>
 nnoremap gs :G<CR> 
 
 nnoremap Y y$
@@ -91,7 +94,7 @@ augroup Vim
     autocmd! VimEnter *.vim nnoremap <leader>c :source %<CR>
 augroup END
 
-if g:colors_name != "gruvbox"
+if exists("g:colors_name") && g:colors_name != "gruvbox"
     hi ColorColumn    ctermbg=214
     hi Normal         ctermbg=234
     hi LineNr         ctermbg=233   ctermfg=251
@@ -102,5 +105,9 @@ if g:colors_name != "gruvbox"
 endif
 
 source ~/.config/nvim/custom/CP.vim
-source ~/.config/nvim/custom/fzf.vim
 source ~/.config/nvim/custom/nerdtree.vim
+
+augroup TAB
+    autocmd!
+    autocmd BufEnter *.lua set tabstop=2 softtabstop=2 shiftwidth=2
+augroup END

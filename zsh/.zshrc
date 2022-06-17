@@ -110,14 +110,13 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
- [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
  [[ -d $HOME/.local/bin ]] && PATH="$PATH:$HOME/.local/bin"
 
 # CUSTOM SETTINGS
 set -o vi
 alias gss='git status -s'
-alias ga='git add .'
+alias ga='git add -A'
 alias commit='git commit -m '
 alias start="vncserver -name remote-desktop -geometry 1280x720 :1"
 declare -x zsh_custom=$ZSH_CUSTOM

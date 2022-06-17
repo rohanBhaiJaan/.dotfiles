@@ -18,8 +18,6 @@ help_setup(){
 install_env(){
     [ -d ~/.oh-my-zsh/ ] && echo ".oh-my-zsh already exists" || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     [ -f ~/.zshrc.p* ] && mv ~/.zshrc.p* ~/.zshrc
-    [ -d ~/.fzf ] && echo ".fzf already exists" || git clone --depth 2 https://github.com/junegunn/fzf.git ~/.fzf
-    [ -f  $PREFIX/bin/fzf ] || ~/.fzf/install
 }
 
 install_packages(){
