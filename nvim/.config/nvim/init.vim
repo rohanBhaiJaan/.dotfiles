@@ -5,6 +5,7 @@ endif
 call plug#begin('~/.config/nvim/autoload/')
 Plug 'morhetz/gruvbox'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Plug 'preservim/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -64,8 +65,11 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
 nnoremap <A-j> <C-d>
 nnoremap <A-k> <C-u>
+nnoremap <C-d> <nop>
+nnoremap <C-u> <nop>
 
 nnoremap <Plug>scroll <C-e>
 nnoremap <ScrollWheelDown> <Plug>scroll
