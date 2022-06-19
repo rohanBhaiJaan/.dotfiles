@@ -5,8 +5,7 @@ vifminfo*
 **/try.*
 .config/neofetch/
 .config/configstore/
-!plug.vim
-**/autoload/*
+autoload
 
 plugins/
 .local/share/
