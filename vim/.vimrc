@@ -29,7 +29,7 @@ Plug 'rohanBhaiJaan/vim-keycast'
 call plug#end()
 
 " <ESC> IS RETURN WHEN ALT IS PRESSED
-let mapleader = ' '
+let mapleader = '\'
 nnoremap <leader>x :source $MYVIMRC<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -51,6 +51,7 @@ nnoremap <Esc>p 4gt
 nnoremap <Plug>scroll <C-e>
 nnoremap <ScrollWheelDown> <Plug>scroll
 nnoremap <C-e> :Lex<CR>
+
 nnoremap Y y$
 nnoremap <leader>tn :set nu! rnu!<Cr>
 

@@ -54,9 +54,9 @@ set colorcolumn=80
 set bg=dark
 set cursorline
 
-colorscheme tokyonight
+colorscheme gruvbox
 
-let mapleader = " "
+let mapleader ='\'
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:gruvbox_contrast_dark = "hard"
@@ -87,6 +87,7 @@ nnoremap gs :G<CR>
 
 nnoremap Y y$
 nnoremap <F1> :TagbarToggle<CR>
+nnoremap <leader>gvd :Gvdiffsplit
 
 inoremap <BS> <Nop>
 inoremap <Del> <Nop>
