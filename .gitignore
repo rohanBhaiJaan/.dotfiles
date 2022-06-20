@@ -6,6 +6,7 @@ vifminfo*
 .config/neofetch/
 .config/configstore/
 autoload
+share
 
 plugins/
 .local/share/
