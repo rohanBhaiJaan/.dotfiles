@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 Red="\033[0;31m"
 Green="\033[0;32m"
 Yellow="\033[1;33m"
@@ -20,13 +22,11 @@ install_env(){
 }
 
 install_by_os(){
-    set -e
     if [ $OSTYPE == "linux-androideabi" ]; then
         apt install $1 -y 2>/dev/null
     else
         sudo apt install $1 -y 2>/dev/null
     fi
-    set +e
 }
 
 install_package(){
@@ -59,26 +59,20 @@ install_packages(){
 }
 
 install_config(){
-    set -e
-    [ ! -d ~/.setup-backup ] && mkdir ~/.setup-backup
-    [ -d  ~/.termux  ] && mv ~/.termux ~/.setup-backup/
+    [ -d ~/.termux ] && rm ~/.termux -rf
     stow -t $HOME -R */
     echo "added all config file in root dir"
     sed -i 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"pi\"/' ~/.zshrc
-    set +e
 }
 
 install_zsh_themes(){
-    set -e
     [ "$(ls -A .themes )" ] &&  themes=( $HOME/.dotfiles/.themes/* ) || themes=()
     for theme in ${themes[@]}; do
-        echo $ZSH_CUSTOM
         theme_name=( $( echo "$theme" | tr '/' ' ') )
         theme_name="${theme_name[-1]}"
-        ln -fs $theme $zsh_custom/themes/$theme_name
+        ln -fs $theme ~/.oh-my-zsh/custom/themes/$theme_name
     done
     echo "installed zsh themes successfully"
-    set +e
 }
 
 install_packages

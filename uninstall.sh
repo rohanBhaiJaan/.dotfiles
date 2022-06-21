@@ -1,7 +1,13 @@
+#!/bin/bash
+
+set -e
+
 remove_packages(){
-    while read pkg; do
-        sh -c "apt remove $pkg -y"
-    done < ~/.not-user.pack
+    if [[ -f ~/.not-user.pack ]]; then
+        while read pkg; do
+            sh -c "apt remove $pkg -y"
+        done < ~/.not-user.pack
+    fi
 }
 
 remove_env(){
