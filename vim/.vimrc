@@ -25,6 +25,7 @@ Plug 'bfrg/vim-cpp-modern'
 Plug 'itchyny/lightline.vim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'rohanBhaiJaan/vim-keycast'
+Plug 'rhysd/vim-grammarous'
 
 call plug#end()
 
@@ -79,5 +80,6 @@ if exists("$g:colors_name") && g:colors_name != "monokai"
 endif
 
 source ~/.config/nvim/custom/CP.vim
-source ~/.config/nvim/custom/changeMode.vim
+let &runtimepath .= ",".expand('$HOME').'/projects/learn-to-move.vim/' 
+" source ~/.config/nvim/custom/changeMode.vim
 source ~/.config/nvim/custom/smallFunc.vim
