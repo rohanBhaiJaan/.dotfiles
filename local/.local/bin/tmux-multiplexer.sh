@@ -31,21 +31,31 @@ done
 set -e
 
 paths=()
-defaultPaths=("~/.dotfiles/" "~/.dotfiles/*/" "~/projects/*/" "~/personal/*/")
 
 # READING PATHS FROM ~/projectPaths
 if [[ -f ~/projectPaths ]];then
     while read path; do
         if [[ $path != "" ]]; then
             [[ ! $path =~ .*/$ ]] && path="$path/"
-            [[ $(ls -A $(sh -c "echo $path/")) ]] && paths+=( $( sh -c "echo $path | tr ' ' '\n'" ) )
+            if [[ ! -d $(sh -c "echo $path") && ! $path =~ .*\*\/$ ]];then
+                echo "$path not found"
+                exit -1
+            else
+                if [[ $path =~ .*\*\/$ ]];then 
+                    $(ls -A $(sh -c "echo $path") 1>/dev/null 2>/dev/null) || continue
+                fi
+                paths+=( $( sh -c "echo $path | tr ' ' '\n'" ) )
+            fi
         fi
     done < ~/projectPaths
 else
-    # SOURCING ALL PATH OF PROJECTS
-    for path in ${defaultPaths[@]};do
-        [[ $(ls -A $(sh -c "echo $path/")) ]] && paths+=( $( sh -c "echo $path | tr ' ' '\n'" ) )
-    done
+    echo "${Red}projectPaths file is missing${remove_props}"
+    read -p "do you want us to create a empty projectPaths file for you? [yes/no] " response
+    if [[ ${response,,} =~ "yes" ]]; then
+        touch ~/projectPaths
+        exit 0
+    fi
+    exit -1
 fi
 
 # getting project path and project name from user
