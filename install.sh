@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 Red="\033[0;31m"
 Green="\033[0;32m"
 Yellow="\033[1;33m"
@@ -49,7 +47,6 @@ install_package(){
 }
 
 install_packages(){
-    user_packages=()
     global_packages=( neovim stow git zsh curl exuberant-ctags fzf python3 clang tmux man tree nodejs )
     for package in ${global_packages[@]};do
         [[ $package == "exuberant-ctags" ]] && package=ctags
@@ -76,6 +73,8 @@ install_zsh_themes(){
 }
 
 install_packages
+set -e
 install_env
 install_config
 install_zsh_themes
+set +e
