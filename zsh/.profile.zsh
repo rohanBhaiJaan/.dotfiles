@@ -9,7 +9,7 @@ alias commit='git commit -m '
 alias start="vncserver -name remote-desktop -geometry 1280x720 :1"
 declare -x zsh_custom=$ZSH_CUSTOM
 
-bindkey -s '^p' 'tmux-multiplexer.sh\n'
-bindkey -s '\ep' 'tmux-multiplexer.sh -editor vim\n'
+bindkey -s '^p' 'open-project.sh\n'
+bindkey -s '\ep' 'open-project.sh -editor vim\n'
 
 export DISPLAY=":1"

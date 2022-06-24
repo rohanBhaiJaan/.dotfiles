@@ -32,8 +32,8 @@ set -e
 
 paths=()
 
-# READING PATHS FROM ~/projectPaths
-if [[ -f ~/projectPaths ]];then
+# READING PATHS FROM ~/.projects
+if [[ -f ~/.projects ]];then
     while read path; do
         if [[ $path != "" ]]; then
             [[ ! $path =~ .*/$ ]] && path="$path/"
@@ -47,12 +47,12 @@ if [[ -f ~/projectPaths ]];then
                 paths+=( $( sh -c "echo $path | tr ' ' '\n'" ) )
             fi
         fi
-    done < ~/projectPaths
+    done < ~/.projects
 else
-    echo "${Red}projectPaths file is missing${remove_props}"
-    read -p "do you want us to create a empty projectPaths file for you? [yes/no] " response
+    echo "${Red}.projects file is missing from home dir${remove_props}"
+    read -p "do you want us to create a empty .projects file for you? [yes/no] " response
     if [[ ${response,,} =~ "yes" ]]; then
-        touch ~/projectPaths
+        touch ~/.projects
         exit 0
     fi
     exit -1
