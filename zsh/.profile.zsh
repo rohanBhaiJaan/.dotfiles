@@ -5,6 +5,8 @@
 set -o vi
 alias gss='git status -s'
 alias ga='git add -A'
+alias glogd='git log --oneline --graph --decorate'
+alias lg='lazygit'
 alias commit='git commit -m '
 alias start="vncserver -name remote-desktop -geometry 1280x720 :1"
 
