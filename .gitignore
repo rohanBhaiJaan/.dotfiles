@@ -1,4 +1,5 @@
 ssh*
+!*.sh
 vifminfo*
 *.old
 **/.netrwhist
@@ -9,4 +10,5 @@ autoload
 share
 
 plugins/
+**/.local/bin/*
 .local/share/
