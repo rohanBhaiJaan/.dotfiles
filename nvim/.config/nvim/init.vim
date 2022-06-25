@@ -99,7 +99,7 @@ augroup Vim
     autocmd! VimEnter *.vim nnoremap <leader>c :source %<CR>
 augroup END
 
-if exists("g:colors_name") && g:colors_name != "gruvbox"
+if g:colors_name != "gruvbox"
     hi ColorColumn    ctermbg=214
     hi Normal         ctermbg=234
     hi LineNr         ctermbg=233   ctermfg=251
@@ -107,6 +107,8 @@ if exists("g:colors_name") && g:colors_name != "gruvbox"
     hi CursorLineNr   ctermbg=237   ctermfg=9     cterm=none 
     hi Pmenu          ctermbg=237                 ctermfg=251
     hi Comment        ctermfg=248
+else
+    hi visual cterm=none ctermbg=242
 endif
 
 source ~/.config/nvim/custom/CP.vim
