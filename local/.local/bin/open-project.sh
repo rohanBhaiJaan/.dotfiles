@@ -7,6 +7,18 @@ help_menu(){
     echo "-help will provide you help menu"
 }
 
+add_project(){
+    set +e
+    dir="$1"
+    [[ $1 == '.' ]] && dir=$(echo $(pwd))
+    [[ ! -d "$dir" ]] && mkdir -p $dir || echo "dir already exists"
+    cd "$(sh -c "echo $1")"
+    echo $dir
+    git branch 2>/dev/null 1>/dev/null || git init 1>/dev/null 2>/dev/null
+    [[ $dir =~ $HOME*$ ]] && echo $dir >> ~/.projects || echo "$HOME/$dir" >> ~/.projects
+    set -e 
+}
+
 while test $# -gt 0; do
     case "$1" in 
         -help)
@@ -22,6 +34,10 @@ while test $# -gt 0; do
             session_name="$1"
             shift
             ;;
+        -add)
+            shift
+            add_project $1
+            exit 0;;
         *)
             help_menu
             exit -1;;
