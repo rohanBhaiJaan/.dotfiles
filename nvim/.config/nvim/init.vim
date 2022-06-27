@@ -25,6 +25,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ThePrimeagen/harpoon'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -33,6 +34,7 @@ Plug 'L3MON4D3/LuaSnip'
 call plug#end()
 
 lua require("my_lsp_config")
+lua require("my_harpoon_config")
 
 if match(&runtimepath, "telescope") != -1
     lua require("my_telescope")

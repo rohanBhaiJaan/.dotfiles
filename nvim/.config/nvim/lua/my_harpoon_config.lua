@@ -1,0 +1,5 @@
+require('harpoon').setup({})
+vim.api.nvim_set_keymap('n', '<leader>ha', ':lua require("harpoon.mark").add_file()<Cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>hp', ':lua require("harpoon.ui").nav_prev()<Cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>hn', ':lua require("harpoon.ui").nav_next()<Cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>hq', ':lua require("harpoon.ui").toggle_quick_menu()<Cr>', { noremap = true })
