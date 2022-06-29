@@ -36,12 +36,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" my terminal use <ESC> key as <Alt>
-nnoremap <Esc>j <C-d>
-nnoremap <Esc>k <C-u>
-nnoremap <C-d> <nop>
-nnoremap <C-u> <nop>
-
 " remap to navigate through tabs in vim 
 nnoremap <Esc>u 1gt
 nnoremap <Esc>i 2gt
