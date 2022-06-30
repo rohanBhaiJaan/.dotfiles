@@ -16,6 +16,13 @@ set lazyredraw
 set bg=dark
 set noshowmode
 
+set path+=**
+set path+=.,**
+set path+=**/.*/**/*
+set wildignore+=**/.git/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/.local/*
+
 call plug#begin("~/.vim/autoload")
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
