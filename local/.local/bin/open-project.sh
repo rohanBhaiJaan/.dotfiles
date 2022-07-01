@@ -53,15 +53,12 @@ if [[ -f ~/.projects ]];then
     while read path; do
         if [[ $path != "" ]]; then
             [[ ! $path =~ .*/$ ]] && path="$path/"
-            if [[ ! -d $(sh -c "echo $path") && ! $path =~ .*\*\/$ ]];then
+            full_path=( $(sh -c "echo $path" | tr ' ' '\n') )
+            if [[ ( "${#full_path[@]}" == 1  && ! -d "$full_path" ) || ( "${#full_path[@]}" > 1 && ! -d "$(dirname $full_path)" ) ]]; then
                 echo "$path not found"
                 exit -1
-            else
-                if [[ $path =~ .*\*\/$ ]];then 
-                    $(ls -A $(sh -c "echo $path") 1>/dev/null 2>/dev/null) || continue
-                fi
-                paths+=( $( sh -c "echo $path | tr ' ' '\n'" ) )
             fi
+            paths+=(${full_path[@]})
         fi
     done < ~/.projects
 else
