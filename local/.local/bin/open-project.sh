@@ -1,6 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/env bash
 # syntax: tmux-multiplexer
 
+debug=0
+
 help_menu(){
     echo "-name will rename the session name default is folder name"
     echo "-editor will open your text editor default is nvim"
@@ -10,12 +12,21 @@ help_menu(){
 add_project(){
     set +e
     dir="$1"
+    [[ ! $1 =~ $HOME\/.*$ ]] && dir=$(echo "$(pwd)/$1")
     [[ $1 == '.' ]] && dir=$(echo $(pwd))
-    [[ ! -d "$dir" ]] && mkdir -p $dir || echo "dir already exists"
-    cd "$(sh -c "echo $1")"
+    dir="$(echo $dir)"
     echo $dir
+    if [[ ! -d "$dir" ]]; then
+        read -p "dir does not exists, do you want to create it? [yes/no] " response
+        [[ ${response,,} =~ "yes" ]] && mkdir -p $dir  || exit -1
+    fi
+    cd $dir
     git branch 2>/dev/null 1>/dev/null || git init 1>/dev/null 2>/dev/null
-    [[ $dir =~ $HOME*$ ]] && echo $dir >> ~/.projects || echo "$HOME/$dir" >> ~/.projects
+    if [[ $dir =~ $HOME\/.*$ ]]; then
+        echo $dir >> ~/.projects 
+    else
+        echo "$HOME/$dir" >> ~/.projects
+    fi
     set -e 
 }
 
@@ -89,6 +100,8 @@ fi
 echo "$editor $session_name"
 
 # setting session
-tmux new-session -s $session_name -c "$project_path" -n term -d
-tmux new-window -n editor -c "$project_path" "$editor ."
-tmux attach -t $session_name
+if [[ $debug != 1 ]]; then
+    tmux new-session -s $session_name -c "$project_path" -n term -d
+    tmux new-window -n editor -c "$project_path" "$editor ."
+    tmux attach -t $session_name
+fi
