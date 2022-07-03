@@ -38,10 +38,6 @@ call plug#end()
 " <ESC> IS RETURN WHEN ALT IS PRESSED
 let mapleader = '\'
 nnoremap <leader>x :source $MYVIMRC<CR>
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 " remap to navigate through tabs in vim 
 nnoremap <Esc>u 1gt

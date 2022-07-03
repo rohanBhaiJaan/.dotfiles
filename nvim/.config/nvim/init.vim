@@ -61,11 +61,6 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:gruvbox_contrast_dark = "hard"
 
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
 nnoremap <Plug>scroll <C-e>
 nnoremap <ScrollWheelDown> <Plug>scroll
 nnoremap <C-e> :Lex<CR>
