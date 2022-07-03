@@ -72,9 +72,20 @@ install_zsh_themes(){
     echo "installed zsh themes successfully"
 }
 
+termux_compatability(){
+    if [[ $OSTYPE == "linux-androideabi" && ! -d termux_local ]]; then
+        cp local termux_local -r
+        stow -t $HOME -D local
+        find termux_local | grep bin | grep .sh | xargs termux-fix-shebang 
+        stow -t $HOME -S termux_local
+    fi
+}
+
+
 install_packages
 set -e
 install_env
 install_config
 install_zsh_themes
+termux_compatability
 set +e
