@@ -57,19 +57,21 @@ done
 
 set -e
 
-paths=()
+declare -a paths=()
 
 # READING PATHS FROM ~/.projects
 if [[ -f ~/.projects ]];then
     while read path; do
-        if [[ $path != "" ]]; then
+        if [[ $path != '' ]]; then
             [[ ! $path =~ .*/$ ]] && path="$path/"
-            full_path=( $(sh -c "echo $path" | tr ' ' '\n') )
-            if [[ ( "${#full_path[@]}" == 1  && ! -d "$full_path" ) || ( "${#full_path[@]}" > 1 && ! -d "$(dirname $full_path)" ) ]]; then
-                echo "$path not found"
+            prev_length=${#paths[@]}
+            paths+=( $( echo $path | tr ' ' '\n' ) )
+            length_diff=$(( ${#paths[@]} - $prev_length ))
+            if [[ ( $length_diff == 1  && ! -d "${paths[$((prev_length))]}" ) \
+                || ( $length_diff > 1 && ! -d "$(dirname ${paths[$((prev_length))]})" ) ]]; then
+                echo "${paths[$prev_length]} not found"
                 exit -1
             fi
-            paths+=(${full_path[@]})
         fi
     done < ~/.projects
 else
