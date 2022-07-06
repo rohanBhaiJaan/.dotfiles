@@ -33,6 +33,7 @@ Plug 'L3MON4D3/LuaSnip'
 call plug#end()
 
 lua require("config")
+lua require("remaps")
 if match(&runtimepath, "fzf") != -1
     source ~/.config/nvim/custom/fzf.vim
 endif

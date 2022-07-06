@@ -14,11 +14,3 @@ require('telescope').setup({
   },
   -- other configuration values here
 })
-
-function map(mode, lhs, rhs, opts)
-    vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
-end
-
-map("n", "<C-F>", ":Telescope find_files<cr>", { noremap = true })
-map("n", "<C-B>", ":Telescope buffers<cr>", { noremap = true })
-map("n", "<C-P>", ":Telescope git_files<cr>", { noremap = true })
