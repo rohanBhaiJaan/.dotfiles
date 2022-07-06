@@ -32,15 +32,10 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 call plug#end()
 
-lua require("my_lsp_config")
-
-if match(&runtimepath, "telescope") != -1
-    lua require("my_telescope")
-elseif match(&runtimepath, "fzf") != -1
+lua require("config")
+if match(&runtimepath, "fzf") != -1
     source ~/.config/nvim/custom/fzf.vim
 endif
-
-lua require("my_tokyonight")
 
 set nu rnu
 set guicursor=
