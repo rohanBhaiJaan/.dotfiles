@@ -76,8 +76,9 @@ if exists("$g:colors_name") && g:colors_name != "monokai"
     hi PmenuSel       ctermbg=247 ctermfg=254
 endif
 
-" source ~/.config/nvim/custom/CP.vim
 let  &runtimepath .=  ','.expand('$HOME').'/projects/CP_setup.vim/' 
-let &runtimepath .= ','.expand('$HOME').'/projects/learn-to-move.vim/' 
+
 source ~/.config/nvim/custom/changeMode.vim
+source ~/.config/nvim/custom/nerdtree.vim
+source ~/.config/nvim/custom/fzf.vim
 source ~/.config/nvim/custom/smallFunc.vim

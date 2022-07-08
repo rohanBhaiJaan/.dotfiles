@@ -6,6 +6,7 @@ call plug#begin('~/.config/nvim/autoload/')
 Plug 'morhetz/gruvbox'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'LunarVim/Colorschemes'
 
 " Plug 'preservim/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -34,9 +35,7 @@ call plug#end()
 
 lua require("my_lsp_config")
 
-if match(&runtimepath, "telescope") != -1
-    lua require("my_telescope")
-elseif match(&runtimepath, "fzf") != -1
+if match(&runtimepath, "fzf") != -1
     source ~/.config/nvim/custom/fzf.vim
 endif
 
@@ -101,7 +100,7 @@ else
     hi visual cterm=none ctermbg=242
 endif
 
-source ~/.config/nvim/custom/CP.vim
+let &runtimepath .= ','. expand('$HOME').'/projects/CP_setup.vim/'
 source ~/.config/nvim/custom/nerdtree.vim
 
 augroup TAB
