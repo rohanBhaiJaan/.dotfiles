@@ -101,6 +101,10 @@ echo "$editor $session_name"
 # setting session
 if [[ $debug != 1 ]]; then
     tmux new-session -s $session_name -c "$project_path" -n term -d
-    tmux new-window -n editor -c "$project_path" "$editor ."
-    tmux attach -t $session_name
+    tmux new-window -t ${session_name}: -n editor -c "$project_path" "$editor ."
+    if [[ -z $TMUX ]];then
+        tmux attach -t $session_name
+    else
+        tmux switch -t $session_name:
+    fi
 fi
