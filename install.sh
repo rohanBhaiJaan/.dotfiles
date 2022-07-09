@@ -47,7 +47,7 @@ install_package(){
 }
 
 install_packages(){
-    global_packages=( neovim stow git zsh curl exuberant-ctags fzf python3 clang tmux man tree nodejs ripgrep )
+    global_packages=( neovim stow git zsh curl exuberant-ctags fzf python3 clang tmux man tree nodejs ripgrep lua-language-server )
     for package in ${global_packages[@]};do
         [[ $package == "exuberant-ctags" ]] && package=ctags
         [[ $package == "python3" ]] && package=python
