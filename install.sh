@@ -56,8 +56,8 @@ install_packages(){
 }
 
 install_config(){
-    [ -d ~/.termux ] && rm ~/.termux -rf
-    stow -t $HOME -R */
+    stow -t $HOME -D */ && [ -d ~/.termux ] && rm ~/.termux -rf
+    ls -d */ | egrep -v "(cp-nvim)" | xargs stow -t $HOME -S
     echo "added all config file in root dir"
     sed -i 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"pi\"/' ~/.zshrc
 }
