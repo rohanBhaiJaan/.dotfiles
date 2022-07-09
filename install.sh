@@ -57,7 +57,7 @@ install_packages(){
 
 install_config(){
     stow -t $HOME -D */ && [ -d ~/.termux ] && rm ~/.termux -rf
-    ls -d */ | egrep -v "(cp-nvim)" | xargs stow -t $HOME -S
+    ls -d */ | egrep -v "(cp-nvim|termux_local)" | xargs stow -t $HOME -S
     echo "added all config file in root dir"
     sed -i 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"pi\"/' ~/.zshrc
 }
@@ -75,6 +75,7 @@ install_zsh_themes(){
 termux_compatability(){
     echo "Coping termux compatible bash files"
     if [[ $OSTYPE == "linux-androideabi" ]]; then
+        [[ -d termux_local ]] && rm termux_local -rf
         cp local termux_local -r
         stow -t $HOME -D local
         find termux_local | grep bin | grep .sh | xargs termux-fix-shebang 
@@ -82,7 +83,6 @@ termux_compatability(){
     fi
 }
 
-[[ -d termux_local ]] && stow -t $HOME -D termux_local && rm termux_local -rf
 install_packages
 set -e
 install_env
