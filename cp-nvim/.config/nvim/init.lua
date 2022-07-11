@@ -5,6 +5,8 @@ vim.cmd([[
     Plug 'tpope/vim-surround'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'ThePrimeagen/harpoon'
+    Plug 'rohanBhaiJaan/be-vimmer.vim'
     Plug '~/projects/CP_setup.vim/'
     call plug#end()
 ]])
@@ -40,5 +42,8 @@ vim.cmd("colorscheme tokyonight")
 vim.g.mapleader = "\\"
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+vim.g.be_vimmer_enable = 1
+vim.g.be_vimmer_disable_backspace = 1
+
 
 require("remaps");
