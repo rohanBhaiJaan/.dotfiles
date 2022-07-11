@@ -26,6 +26,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ThePrimeagen/harpoon'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -57,6 +58,8 @@ let mapleader ='\'
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:gruvbox_contrast_dark = "hard"
+let g:be_vimmer_enable = 1
+let g:be_vimmer_disable_backspace = 1
 
 nnoremap <Plug>scroll <C-e>
 nnoremap <ScrollWheelDown> <Plug>scroll
