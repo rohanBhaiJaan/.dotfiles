@@ -84,6 +84,24 @@ else
     exit -1
 fi
 
+#sorting paths
+for i in ${!paths[@]}; do
+    for j in ${!paths[@]}; do
+        if [[ ${paths[$i]} > ${paths[$j]} ]]; then
+            temp=${paths[$i]}
+            paths[$i]=${paths[$j]}
+            paths[$j]=$temp
+        fi
+    done
+done
+
+# removing duplicates
+for i in ${!paths[@]}; do
+    if [[ ${paths[$i]} == ${paths[$i+1]} ]]; then
+        unset paths[$i]
+    fi
+done
+
 # getting project path and project name from user
 project_path=$( echo "${paths[@]}" | tr ' ' '\n' | fzf)
 folder_name_arr=($( echo $project_path | tr '/' ' ' ))
