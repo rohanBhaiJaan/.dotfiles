@@ -24,9 +24,9 @@ Plug 'tpope/vim-fugitive'
 " Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'ThePrimeagen/harpoon'
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ThePrimeagen/harpoon'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -52,8 +52,6 @@ set colorcolumn=80
 set bg=dark
 set cursorline
 
-colorscheme gruvbox
-
 let mapleader ='\'
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
@@ -61,28 +59,22 @@ let g:gruvbox_contrast_dark = "hard"
 let g:be_vimmer_enable = 1
 let g:be_vimmer_disable_backspace = 1
 
+colorscheme gruvbox
+
 nnoremap <Plug>scroll <C-e>
 nnoremap <ScrollWheelDown> <Plug>scroll
 nnoremap <C-e> :Lex<CR>
 
-nnoremap <A-u> 1gt
-nnoremap <A-i> 2gt
-nnoremap <A-o> 3gt
-nnoremap <A-p> 4gt
-
-nnoremap - :vertical resize -5<CR>
-nnoremap + :vertical resize +5<CR>
-
-nnoremap gs :G<CR> 
+nnoremap <leader>gs :G<CR> 
+nnoremap <leader>gcb :G checkout 
+nnoremap <leader>gCb :G checkout -b
+nnoremap <leader>gmt :G mergetool<CR>
+nnoremap <leader>gD :Gvdiffsplit
+nnoremap <leader>gd :Gvdiffsplit<CR>
+nnoremap <leader>gpd :Gvdiffsplit HEAD~1<CR>
 
 nnoremap Y y$
 nnoremap <F1> :TagbarToggle<CR>
-nnoremap <leader>gvd :Gvdiffsplit
-
-inoremap <BS> <Nop>
-inoremap <Del> <Nop>
-inoremap <C-w> <Nop>
-inoremap <C-h> <Nop>
 
 augroup Vim
     autocmd! VimEnter *.vim nnoremap <leader>x :source ~/.config/nvim/init.vim<CR>
