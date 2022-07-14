@@ -40,7 +40,7 @@ if match(&runtimepath, "fzf") != -1
     source ~/.config/nvim/custom/fzf.vim
 endif
 
-set nu rnu
+set noshowmode
 set guicursor=
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set nowrap noswapfile nobackup backspace=0
@@ -58,6 +58,7 @@ let g:netrw_winsize = 25
 let g:gruvbox_contrast_dark = "hard"
 let g:be_vimmer_enable = 1
 let g:be_vimmer_disable_backspace = 1
+let g:be_vimmer_wait_time = 1000
 
 colorscheme gruvbox
 
@@ -99,5 +100,11 @@ source ~/.config/nvim/custom/nerdtree.vim
 
 augroup TAB
     autocmd!
-    autocmd BufEnter *.lua set tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufEnter *.lua set tabstop=3 softtabstop=2 shiftwidth=2
+augroup END
+
+augroup ALL
+    autocmd!
+    autocmd FileType * set nu rnu
+    autocmd FileType vimwiki nnoremap <buffer> <leader>tl <Plug>VimwikiToggleListItem
 augroup END
