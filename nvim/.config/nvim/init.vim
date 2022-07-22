@@ -77,6 +77,12 @@ nnoremap <leader>gpd :Gvdiffsplit HEAD~1<CR>
 nnoremap Y y$
 nnoremap <F1> :TagbarToggle<CR>
 
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <BS> <S-Left>
+cnoremap <ESC><BS> <S-Right>
+
 augroup Vim
     autocmd! VimEnter *.vim nnoremap <leader>x :source ~/.config/nvim/init.vim<CR>
     autocmd! VimEnter *.vim nnoremap <leader>c :source %<CR>
@@ -98,13 +104,9 @@ let &runtimepath .= ','. expand('$HOME').'/projects/CP_setup.vim/'
 let &runtimepath .= ','. expand('$HOME').'/projects/be-vimmer.vim/'
 source ~/.config/nvim/custom/nerdtree.vim
 
-augroup TAB
-    autocmd!
-    autocmd BufEnter *.lua set tabstop=3 softtabstop=2 shiftwidth=2
-augroup END
-
 augroup ALL
     autocmd!
+    autocmd BufEnter *.lua set tabstop=3 softtabstop=2 shiftwidth=2
     autocmd FileType * set nu rnu
     autocmd FileType vimwiki nnoremap <buffer> <leader>tl <Plug>VimwikiToggleListItem
 augroup END

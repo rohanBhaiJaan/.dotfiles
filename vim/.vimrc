@@ -19,6 +19,10 @@ set path+=**
 set wildignore+=**/.git/*
 set wildignore+=**/node_modules/*
 
+if v:version >= 900
+    set wildoptions=pum
+endif
+
 " <ESC> IS RETURN WHEN ALT IS PRESSED
 let mapleader = '\'
 let g:netrw_winsize = 30
@@ -42,6 +46,12 @@ nnoremap <C-e> :Lex<CR>
 nnoremap <C-p> :find<space>
 
 nnoremap Y y$
+
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <BS> <S-Left>
+cnoremap <ESC><BS> <S-Right>
 
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
@@ -70,13 +80,6 @@ function! s:setcolorscheme() abort
     endif
 endfunction
 
-function! s:cleanNoNameEmptyBuffers()
-    let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val) < 0 && (getbufline(v:val, 1, "$") == [""])')
-    if !empty(buffers)
-        exe 'bd '.join(buffers, ' ')
-    endif
-endfunction
-
 let &runtimepath .= ','.expand('$HOME').'/projects/CP_setup.vim/' 
 let &runtimepath .= ','. expand('$HOME').'/projects/be-vimmer.vim/'
 
@@ -85,5 +88,4 @@ augroup ALL
     autocmd FILETYPE * set nu rnu
     autocmd FileType vimwiki nnoremap <buffer> <leader>tl <Plug>VimwikiToggleListItem
     autocmd VimEnter * call s:setcolorscheme()
-    autocmd BufEnter * call s:cleanNoNameEmptyBuffers()
 augroup END
