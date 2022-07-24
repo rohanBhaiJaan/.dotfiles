@@ -109,4 +109,5 @@ augroup ALL
     autocmd BufEnter *.lua set tabstop=3 softtabstop=2 shiftwidth=2
     autocmd FileType * set nu rnu
     autocmd FileType vimwiki nnoremap <buffer> <leader>tl <Plug>VimwikiToggleListItem
+    autocmd FileType cmake LspStart
 augroup END
