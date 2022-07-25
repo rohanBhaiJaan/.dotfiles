@@ -1,16 +1,3 @@
-vim.cmd([[
-    call plug#begin('~/.config/nvim/autoload')
-    Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-surround'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'ThePrimeagen/harpoon'
-    Plug 'rohanBhaiJaan/be-vimmer.vim'
-    Plug '~/projects/CP_setup.vim/'
-    call plug#end()
-]])
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
@@ -37,13 +24,34 @@ vim.opt.scrolloff = 10
 
 vim.opt.termguicolors = true
 
-vim.cmd("colorscheme tokyonight")
-
 vim.g.mapleader = "\\"
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 vim.g.be_vimmer_enable = 1
 vim.g.be_vimmer_disable_backspace = 1
 
+vim.opt.runtimepath:append(vim.fn.expand('$HOME') .. '/projects/CP_setup.vim/')
+vim.opt.runtimepath:append(vim.fn.expand('$HOME') .. '/projects/be-vimmer.vim/')
+
+vim.cmd("colorscheme tokyonight")
 
 require("remaps");
+
+vim.cmd [[packadd packer.nvim]]
+return require('packer').startup(function()
+  use 'wbthomason/packer.nvim'
+  use {
+    'folke/tokyonight.nvim',
+    branch = 'main'
+  }
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-surround'
+  use 'nvim-lua/plenary.nvim'
+  use 'nvim-telescope/telescope.nvim'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    cmd = 'TSUpdate'
+  }
+  use 'ThePrimeagen/harpoon'
+end)
+
