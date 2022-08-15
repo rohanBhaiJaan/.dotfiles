@@ -35,7 +35,7 @@ let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 0
 
 let g:be_vimmer_enable = 1
-let g:be_vimmer_disable_backspace = 1
+" let g:be_vimmer_insert_mode_deletion = 0
 let g:be_vimmer_wait_time = 1000
 
 nnoremap <leader>x :source $MYVIMRC<CR>

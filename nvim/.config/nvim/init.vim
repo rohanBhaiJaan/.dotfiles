@@ -57,7 +57,7 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:gruvbox_contrast_dark = "hard"
 let g:be_vimmer_enable = 1
-let g:be_vimmer_disable_backspace = 1
+let g:be_vimmer_insert_mode_deletion = 0
 let g:be_vimmer_wait_time = 1000
 
 colorscheme gruvbox
